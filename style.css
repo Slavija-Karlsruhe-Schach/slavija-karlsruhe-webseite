@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background: #1b1b1b url("images/Schachzug im goldenen Licht.png") center/cover no-repeat;
+  background: #1b1b1b; /* fallback color if image is missing */
   color: white;
   min-height: 100vh; /* full viewport height */
   padding: 20px;
@@ -15,7 +15,7 @@ header {
   flex-direction: column;
   justify-content: center; /* vertical center */
   align-items: center;
-  position: relative; /* for overlay */
+  position: relative; /* for overlay and absolute bg img */
   overflow: hidden;
 }
 
@@ -25,7 +25,20 @@ header::before {
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.25));
-  z-index: 0;
+  z-index: 1;
+}
+
+/* hero background image inserted as an <img> to allow precise cropping */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* scale and crop */
+  /* center of the remaining visible area: top 30% cut, bottom 10% cut -> center at 60% */
+  object-position: 50% 60%;
+  z-index: 0; /* below overlay */
+  pointer-events: none; /* don't interfere with clicks */
 }
 
 .brand {
@@ -33,7 +46,7 @@ header::before {
   align-items: center;
   gap: 12px;
   position: relative;
-  z-index: 1; /* keep above overlay */
+  z-index: 2; /* keep above overlay */
 }
 
 .brand-img {
