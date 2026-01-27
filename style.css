@@ -8,7 +8,7 @@ body {
 header {
   background: #1b1b1b; /* fallback color if image is missing */
   color: white;
-  min-height: 100vh; /* full viewport height */
+  min-height: 60vh; /* reduce header to 60% of viewport height */
   padding: 20px;
   text-align: center;
   display: flex;
@@ -33,7 +33,7 @@ header::before {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 60%;
+  height: 100%; /* fill the entire header to avoid visible fallback color */
   object-fit: cover; /* scale and crop */
   /* center of the remaining visible area: top 30% cut, bottom 10% cut -> center at 60% */
   object-position: 50% 60%;
