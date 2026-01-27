@@ -46,7 +46,7 @@ header::before {
   align-items: center;
   gap: 12px;
   position: relative;
-  z-index: 2; /* keep above overlay */
+  z-index: 3; /* keep above overlay and content */
 }
 
 .brand-img {
@@ -93,8 +93,25 @@ section {
   padding: 25px;
 }
 
+.content {
+  max-width: 900px;
+  margin: -12vh auto 30px; /* pull up to overlap header (more overlap so headings move up) */
+  background: white;
+  padding: 25px;
+  position: relative;
+  z-index: 2; /* above header overlay */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
 h1, h2 {
   color: #1b1b1b;
+}
+
+/* tighten headings so they appear higher */
+.content h2, section h2, main h2 {
+  margin-top: 0.1rem;
+  margin-bottom: 0.6rem;
 }
 
 footer {
